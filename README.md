@@ -13,6 +13,10 @@ Features:
 Requirements:
 Java JRE 1.8. (https://java.com/de/download/)
 
+Download:
+EXE-version (Win-only): https://github.com/michaelgoetze/Dict.Offline/raw/master/Dict.Offline.exe
+JAR-version (All-OS): https://github.com/michaelgoetze/Dict.Offline/raw/master/Dict.Offline.jar
+
 No installation required for starting:
 Windows:  Download Dict.Offline.jar or Dict.Offline.exe and simply double-click to start. 
 any OS:  Download Dict.Offline.jar and run from command line using:

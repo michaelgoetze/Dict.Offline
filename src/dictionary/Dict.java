@@ -45,8 +45,8 @@ public class Dict {
 				String dictFile = getProperty("DICT_DIR");
 				if (dictFile.equals("") || !(new File(dictFile).exists())) {
 					MessageWindow.showMessageDialog(
-							"Kein Wörterbuch gefunden! Laden sie bitte ein passendes Wörterbuch (Dict.cc) herunter und wählen Sie es im nächsetn Schritt aus",
-							"Wörterbuch-datei auswählen", JOptionPane.INFORMATION_MESSAGE);
+							"No dictionary file found. Select Dictionary in the next step",
+							"Select Dictionary", JOptionPane.INFORMATION_MESSAGE);
 					Frame f = new Frame("dummy");
 					f.setIconImage(icon);
 					JFileChooser fc = new JFileChooser(getHomeDir());
