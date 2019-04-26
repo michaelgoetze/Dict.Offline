@@ -23,9 +23,9 @@ EXE-version (Win-only): [Download](https://github.com/michaelgoetze/Dict.Offline
 JAR-version (All-OS): [Download](https://github.com/michaelgoetze/Dict.Offline/raw/master/Dict.Offline.jar)
 
 ### No installation required for starting:
-Windows:  Download Dict.Offline.jar or Dict.Offline.exe and simply double-click to start. 
+**Windows:**  Download Dict.Offline.jar or Dict.Offline.exe and simply double-click to start. 
 
-any other operating system:  Download Dict.Offline.jar and run from command line using:
+**any other operating system:**  Download Dict.Offline.jar and run from command line using:
 
 *java -jar <PATH-TO-FILE>/Dict.Offline.jar*
 
