@@ -9,7 +9,7 @@ Dictionary files are not included due to licensing, but can be downloaded for fr
 ### Features:
 - Any languauge combinations offered by Dict.cc can be loaded
 - Autofill
-- exact matching terms and artially matching words are searched independently
+- exact matching terms and partially matching words are searched independently
 - Adjustable font-size
 
 ### Requirements:
@@ -18,9 +18,9 @@ Java JRE 1.8. (https://java.com/de/download/)
 ### Download:
 Dictionary (not provided here): [Dict.cc - download](https://www.dict.cc/?s=about%3Awordlist&l=e)
 
-EXE-version (Win-only): [Download](https://github.com/michaelgoetze/Dict.Offline/raw/master/Dict.Offline.exe)
+EXE-version (Windows only): [Download](https://github.com/michaelgoetze/Dict.Offline/raw/master/Dict.Offline.exe)
 
-JAR-version (All-OS): [Download](https://github.com/michaelgoetze/Dict.Offline/raw/master/Dict.Offline.jar)
+JAR-version (All Operating Systems): [Download](https://github.com/michaelgoetze/Dict.Offline/raw/master/Dict.Offline.jar)
 
 ### No installation required for starting:
 **Windows:**  Download Dict.Offline.jar or Dict.Offline.exe and simply double-click to start. 
