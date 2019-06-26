@@ -5,6 +5,8 @@ Dictionary tool to read Dict.cc dictionary files
 
 Dictionary files are not included due to licensing, but can be downloaded for free from 
 [Dict.cc - download](https://www.dict.cc/?s=about%3Awordlist&l=e).
+#### version 1.0.1:
+- Dict.Offline asks before closing the window to prevent lengthy restarts.
 
 ### Features:
 - Any languauge combinations offered by Dict.cc can be loaded
