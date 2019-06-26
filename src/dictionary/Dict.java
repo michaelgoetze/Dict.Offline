@@ -17,7 +17,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
@@ -26,15 +25,19 @@ import GUI.MainFrame;
 import GUI.MessageWindow;
 import GUI.SplashScreen;
 
-/*
- * Functions to add:
- * - autofill
- */
 
 public class Dict {
 
 	public static Dictionary dict;
 	public static Image icon;
+
+/*
+ * Version 1.0.1:
+ * 	Dict.Offline asks before closing the window
+ * 
+ */
+	
+			
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -91,7 +94,6 @@ public class Dict {
 				// Close the dialog
 				splash.dispose();
 				MainFrame frame = new MainFrame();
-				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.setVisible(true);
 			}
 

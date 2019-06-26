@@ -17,6 +17,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,6 +47,7 @@ import javax.swing.SortOrder;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
+import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
@@ -116,16 +119,33 @@ public class MainFrame extends JFrame {
 		partialModel = new DictModel();
 		partialSorter = new TableRowSorter<DictModel>(partialModel);
 		setTitle("Dict.Offline");
-		
+
 		this.setIconImage(Dict.icon);
+
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		addWindowListener(new WindowAdapter() {
+			@Override  
+			public void windowClosing(WindowEvent e) {
+			    int confirmed = JOptionPane.showConfirmDialog(null, 
+			        "Are you sure you want to exit the program?", "Exit Program Message Box",
+			        JOptionPane.YES_NO_OPTION);
+
+			    if (confirmed == JOptionPane.YES_OPTION) {
+			      dispose();
+			    }
+			  }
+			});
+
 		List<TableRowSorter.SortKey> sortKeys = new ArrayList<TableRowSorter.SortKey>();
 		sortKeys.add(new TableRowSorter.SortKey(RELEVANCE, SortOrder.DESCENDING));
 		exactSorter.setSortKeys(sortKeys);
 		partialSorter.setSortKeys(sortKeys);
-		// create list for dictionary this in your case might be done via calling a method which queries db and returns results as arraylist
+		// create list for dictionary this in your case might be done via calling a
+		// method which queries db and returns results as arraylist
 		ArrayList<String> words = Dict.dict.getAllWords();
-		autoSuggestor = new AutoSuggestor(queryField, this, words, Color.WHITE.brighter(), Color.black, Color.RED, 1f, FONTSIZE); 
-		
+		autoSuggestor = new AutoSuggestor(queryField, this, words, Color.WHITE.brighter(), Color.black, Color.RED, 1f,
+				FONTSIZE);
+
 		exactTable = new JTable(exactModel) {
 			private static final long serialVersionUID = -7358328224949460237L;
 
@@ -430,11 +450,11 @@ public class MainFrame extends JFrame {
 
 			@Override
 			public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
-					}
+			}
 
 			@Override
 			public void popupMenuCanceled(PopupMenuEvent e) {
-					}
+			}
 		});
 		getRootPane().setDefaultButton(searchButton);
 
@@ -581,10 +601,12 @@ public class MainFrame extends JFrame {
 		private static final long serialVersionUID = -1260600208698803499L;
 
 		@Override
-		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int col) {
+		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
+				int row, int col) {
 			String text = "";
 			if (value != null) {
-				text = "<html><body><p style=\"font-size:" + (int) FONTSIZE + "px\">" + value.toString() + "</p></body></html>";
+				text = "<html><body><p style=\"font-size:" + (int) FONTSIZE + "px\">" + value.toString()
+						+ "</p></body></html>";
 			}
 			try {
 				for (String word : ((DictModel) table.getModel()).getQuery().split("[\\s-]")) {
@@ -616,10 +638,12 @@ public class MainFrame extends JFrame {
 		private static final long serialVersionUID = -1260600208698803499L;
 
 		@Override
-		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int col) {
+		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
+				int row, int col) {
 			String text = "";
 			if (value != null) {
-				text = "<html><body><p style=\"font-size:" + (int) FONTSIZE + "px\">" + value.toString() + "</p></body></html>";
+				text = "<html><body><p style=\"font-size:" + (int) FONTSIZE + "px\">" + value.toString()
+						+ "</p></body></html>";
 			}
 			if (isSelected) {
 				setForeground(table.getSelectionForeground());
@@ -649,7 +673,8 @@ public class MainFrame extends JFrame {
 		}
 
 		@Override
-		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int col) {
+		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
+				int row, int col) {
 			setText("");
 			setHorizontalAlignment(SwingConstants.CENTER);
 			int score = Integer.parseInt(value.toString());
@@ -730,9 +755,11 @@ public class MainFrame extends JFrame {
 		int[] rowsSelected = table.getSelectedRows();
 		int[] colsSelected = table.getSelectedColumns();
 		if (numRows != rowsSelected[rowsSelected.length - 1] - rowsSelected[0] + 1 || numRows != rowsSelected.length
-				|| numCols != colsSelected[colsSelected.length - 1] - colsSelected[0] + 1 || numCols != colsSelected.length) {
+				|| numCols != colsSelected[colsSelected.length - 1] - colsSelected[0] + 1
+				|| numCols != colsSelected.length) {
 
-			JOptionPane.showMessageDialog(null, "Invalid Copy Selection", "Invalid Copy Selection", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Invalid Copy Selection", "Invalid Copy Selection",
+					JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
@@ -771,7 +798,8 @@ public class MainFrame extends JFrame {
 			// Jetzt werden alle Listeners benachrichtigt
 
 			// Zuerst ein Event, "neue Row an der Stelle index" herstellen
-			TableModelEvent e = new TableModelEvent(this, index, index, TableModelEvent.ALL_COLUMNS, TableModelEvent.INSERT);
+			TableModelEvent e = new TableModelEvent(this, index, index, TableModelEvent.ALL_COLUMNS,
+					TableModelEvent.INSERT);
 
 			// Nun das Event verschicken
 			for (int i = 0, n = listeners.size(); i < n; i++) {
@@ -926,8 +954,7 @@ public class MainFrame extends JFrame {
 			}
 		});
 		menu.add(menuItem);
-		
-		
+
 		autoFillBox.setSelected(!Dict.getProperty("AUTOFILL").equalsIgnoreCase("false"));
 		autoSuggestor.setActive(autoFillBox.isSelected());
 		autoFillBox.addActionListener(new ActionListener() {
