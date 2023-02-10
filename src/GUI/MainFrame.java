@@ -124,17 +124,17 @@ public class MainFrame extends JFrame {
 
 		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		addWindowListener(new WindowAdapter() {
-			@Override  
+			@Override
 			public void windowClosing(WindowEvent e) {
-			    int confirmed = JOptionPane.showConfirmDialog(null, 
-			        "Are you sure you want to exit the program?", "Exit Program Message Box",
-			        JOptionPane.YES_NO_OPTION);
+				int confirmed = JOptionPane.showConfirmDialog(null,
+						"Are you sure you want to exit the program?", "Exit Program Message Box",
+						JOptionPane.YES_NO_OPTION);
 
-			    if (confirmed == JOptionPane.YES_OPTION) {
-			      dispose();
-			    }
-			  }
-			});
+				if (confirmed == JOptionPane.YES_OPTION) {
+					dispose();
+				}
+			}
+		});
 
 		List<TableRowSorter.SortKey> sortKeys = new ArrayList<TableRowSorter.SortKey>();
 		sortKeys.add(new TableRowSorter.SortKey(RELEVANCE, SortOrder.DESCENDING));
@@ -602,7 +602,7 @@ public class MainFrame extends JFrame {
 
 		@Override
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
-				int row, int col) {
+													   int row, int col) {
 			String text = "";
 			if (value != null) {
 				text = "<html><body><p style=\"font-size:" + (int) FONTSIZE + "px\">" + value.toString()
@@ -639,7 +639,7 @@ public class MainFrame extends JFrame {
 
 		@Override
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
-				int row, int col) {
+													   int row, int col) {
 			String text = "";
 			if (value != null) {
 				text = "<html><body><p style=\"font-size:" + (int) FONTSIZE + "px\">" + value.toString()
@@ -674,7 +674,7 @@ public class MainFrame extends JFrame {
 
 		@Override
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
-				int row, int col) {
+													   int row, int col) {
 			setText("");
 			setHorizontalAlignment(SwingConstants.CENTER);
 			int score = Integer.parseInt(value.toString());
@@ -969,69 +969,18 @@ public class MainFrame extends JFrame {
 		JMenu subMenu = new JMenu("Font-size:");
 		subMenu.setFont(f);
 		menu.add(subMenu);
-		menuItem = new JMenuItem("10px");
-		menuItem.setFont(f);
-		menuItem.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				resetFontSize(10f);
-			}
-		});
-		subMenu.add(menuItem);
-		menuItem = new JMenuItem("11px");
-		menuItem.setFont(f);
-		menuItem.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				resetFontSize(11f);
-			}
-		});
-		subMenu.add(menuItem);
-		menuItem = new JMenuItem("12px");
-		menuItem.setFont(f);
-		menuItem.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				resetFontSize(12f);
-			}
-		});
-		subMenu.add(menuItem);
-		menuItem = new JMenuItem("13px");
-		menuItem.setFont(f);
-		menuItem.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				resetFontSize(13f);
-			}
-		});
-		subMenu.add(menuItem);
-		menuItem = new JMenuItem("14px");
-		menuItem.setFont(f);
-		menuItem.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				resetFontSize(14f);
-			}
-		});
-		subMenu.add(menuItem);
-		menuItem = new JMenuItem("15px");
-		menuItem.setFont(f);
-		menuItem.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				resetFontSize(15f);
-			}
-		});
-		subMenu.add(menuItem);
-		menuItem = new JMenuItem("16px");
-		menuItem.setFont(f);
-		menuItem.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				resetFontSize(16f);
-			}
-		});
-		subMenu.add(menuItem);
+		float[] fontArr={10f, 11f, 12f, 13f,14f,15f, 16f};
+		for (float font : fontArr) {
+			JMenuItem menuItemTemp = new JMenuItem((int)font+"px");
+			menuItemTemp.setFont(f);
+			menuItemTemp.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					resetFontSize(font);
+				}
+			});
+			subMenu.add(menuItemTemp);
+		}
 
 		menuItem = new JMenuItem("Exit");
 		menuItem.setFont(f);
